@@ -8,7 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class LiteraturaApplication implements CommandLineRunner {
 
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
 
         SpringApplication.run(LiteraturaApplication.class, args);
     }
