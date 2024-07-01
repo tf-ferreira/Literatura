@@ -1,22 +1,29 @@
 package com.tf.literatura.main;
 
-<<<<<<< HEAD
-public class Main {
-    public void menu(){
-        System.out.println("Hi!");
-=======
-import com.tf.literatura.model.DadosLivros;
+
+import com.tf.literatura.model.DadosBusca;
 import com.tf.literatura.service.ConsumoApi;
 import com.tf.literatura.service.ConverteDados;
 
+import java.util.Scanner;
+
 public class Main {
+    private final String ENDERECO = "https://gutendex.com/books/?search=";
+    Scanner leitor = new Scanner(System.in);
+
     public void  menu(){
 
         ConsumoApi api = new ConsumoApi();
-        String json = api.obterDados("https://gutendex.com/books/?ids=11");
+        System.out.println("Digite o nome do livro: ");
+        String nomeTitulo = leitor.nextLine();
+        nomeTitulo = nomeTitulo.replace(" ","%20");
+        String json = api.obterDados(ENDERECO+nomeTitulo);
         ConverteDados conversor = new ConverteDados();
-        DadosLivros dadosLivros = conversor.obterDados(json, DadosLivros.class);
-        System.out.println(dadosLivros);
->>>>>>> cd5e0f3 (fixes dependencies and connects Api)
+        DadosBusca dadosBusca = conversor.obterDados(json, DadosBusca.class);
+        if(dadosBusca.count().equals("1")){
+            System.out.println(dadosBusca.livros());
+        }else{
+            System.out.println("Livro não encontrado");
+        }
     }
 }
