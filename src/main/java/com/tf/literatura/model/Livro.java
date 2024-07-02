@@ -26,4 +26,11 @@ public class Livro {
     public void setAutor(Autor autor) {
         this.autor = autor;
     }
+
+
+    @Override
+    public String toString() {
+        return "Nome do livro: " + this.titulo + ", "+
+                autor;
+    }
 }

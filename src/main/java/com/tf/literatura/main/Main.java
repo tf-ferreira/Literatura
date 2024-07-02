@@ -9,6 +9,7 @@ import com.tf.literatura.repository.LivroRepository;
 import com.tf.literatura.service.ConsumoApi;
 import com.tf.literatura.service.ConverteDados;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -32,7 +33,8 @@ public class Main {
             System.out.println("\n\n");
             System.out.println("*******************************************************");
             System.out.println("            (1) Buscar um Livro");
-            System.out.println("            (2) Buscar um Autor");
+            System.out.println("            (2) Listar Autores");
+            System.out.println("            (3) Listar Livros");
             System.out.println("            (0) Sair");
             System.out.println("*******************************************************");
 
@@ -44,7 +46,10 @@ public class Main {
                     buscaLivro();
                     break;
                 case 2:
-                    buscaAutor();
+                    todosAutores();
+                    break;
+                case 3:
+                    todosLivros();
                     break;
             }
         }while(opcaoMenu != 0);
@@ -87,7 +92,7 @@ public class Main {
         }
     }
 
-    private void buscaAutor() {
+    public void buscaAutor() {
         Scanner leitor = new Scanner(System.in);
 
         System.out.println("Digite o nome do Autor: ");
@@ -100,4 +105,18 @@ public class Main {
             System.out.println("Autor nao encontrado");
         }
     }
+
+    public void todosAutores() {
+        System.out.println("");
+        List<Autor> autores = autorRepository.findAll();
+        autores.forEach(System.out::println);
+        System.out.println("");
+    }
+    public void todosLivros() {
+        System.out.println("");
+        List<Livro> livros = livroRepository.findAll();
+        livros.forEach(System.out::println);
+        System.out.println("");
+    }
+
 }
