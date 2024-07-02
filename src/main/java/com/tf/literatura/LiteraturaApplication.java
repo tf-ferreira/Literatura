@@ -23,7 +23,7 @@ public class LiteraturaApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Main main = new Main();
-        main.menu(livroRepository,autorRepository);
+        Main main = new Main(livroRepository,autorRepository);
+        main.menu();
     }
 }

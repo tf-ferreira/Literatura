@@ -48,4 +48,8 @@ public class Autor {
     public void setLivros(Livro livro) {
         this.livros.add(livro);
     }
+
+    public String getNome() {
+        return nome;
+    }
 }
